@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <title>Treasure Hunt</title>
+  
+  <script async type="application/dart" src="app.dart"></script>
+  <script async src="packages/browser/dart.js"></script>
+  
+  <link rel="stylesheet" href="packages/bootstrap_for_pub/3.1.0/css/bootstrap.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1>Treasure Hunt</h1>
+    
+    <div class="btn-group">
+      <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">
+        <span id="dest-title">Choose Your Destination</span> <span class="caret"></span>
+      </button>
+      <ul id="dest-menu" class="dropdown-menu">
+      </ul>
+    </div>
+    
+    <div id="error-alert"></div>
+    
+    <div id="info-panel" class="well well-sm">
+      <h3>Welcome to Treasure Hunt!</h3>
+      <p>
+        Choose a destination to start. Good luck!
+      </p>
+    </div>
+    
+    <div id="compass-container">
+      <img id="compass" src="resources/images/compass.png" alt="compass">
+      <img id="needle" src="resources/images/needle.png" alt="needle">
+    </div>
+    
+  </div>
+
+  <script src="packages/jquery_for_pub/1.11.0/jquery-1.11.0.min.js"></script>
+  <script src="packages/bootstrap_for_pub/3.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

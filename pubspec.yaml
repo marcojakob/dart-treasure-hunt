@@ -1,0 +1,7 @@
+name: treasure_hunt
+description: A treasure hunt app to learn dart programming.
+dependencies:
+  bootstrap_for_pub: any
+  browser: any
+  geo: any
+  jquery_for_pub: any
