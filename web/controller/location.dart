@@ -1,9 +1,15 @@
 part of treasure_hunt;
 
-class LocationController {
+/**
+ * Watches the location and device orientation of the user.
+ */
+class LocationManager {
   
+  /// Defines how close the user must get to the destination (in meters).
+  final int SUCCESS_RADIUS = 30;
+    
   /// The current location.
-  LatLng location = new LatLng(46.949150, 7.438484); // Bahnhof Bern
+  LatLng location;
   
   /// The accuracy of [location].
   double accuracy;
@@ -24,17 +30,17 @@ class LocationController {
   bool showingSuccessMessage = false;
   
   /**
-   * Constructor.
+   * Constructor. Starts watching the location and device orientation.
    */
-  LocationController() {
-    // Start watching the location of the user.
+  LocationManager() {
+    // Start watching the location of the user and his device orientation.
     watchLocation();
-    
     watchDeviceOrientation();
   }
   
   /**
-   * Uses HTML5 geolocation to watch the current location of the device.
+   * Uses HTML5 geolocation to watch the current location of the device. When
+   * the location changes, the view is updated.
    */
   void watchLocation() {
     if (window.navigator.geolocation != null) {
@@ -50,7 +56,7 @@ class LocationController {
         // Received valid location. Clear error alerts.
         alerts.clearError();
       }, onError: (error) {
-        alerts.showError('The Geolocation service failed. Will try again.');
+        alerts.showError('The geolocation service failed.');
       });
     } else {
       // Browser doesn't support Geolocation.
@@ -58,6 +64,9 @@ class LocationController {
     }
   }
   
+  /**
+   * Watches the device orientation and updates the compass.
+   */
   void watchDeviceOrientation() {
     window.onDeviceOrientation.listen((DeviceOrientationEvent e) {
       heading = e.alpha;
@@ -65,7 +74,15 @@ class LocationController {
       updateCompass();
     });
   }
-
+  
+  /**
+   * Changes the destination to [newDestination].
+   */
+  void changeDestination(Destination newDestination) {
+    destination = newDestination;
+    updateLocation();
+  }
+  
   /**
    * Recalculates the distance and heading, updates the view.
    */
@@ -101,6 +118,9 @@ class LocationController {
     }
   }
   
+  /**
+   * Updates the compass heading.
+   */
   void updateCompass() {
     // Update the compass.
     compass.updateHeading(heading, destinationHeading);

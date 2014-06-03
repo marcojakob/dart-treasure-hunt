@@ -30,7 +30,7 @@ class DestinationDropdown {
         ..text = dest.name
         ..onClick.listen((e) {
           e.preventDefault(); // Prevent browser from following the link.
-          updateDestination(dest);
+          destinationChanged(dest);
         });
 
     LIElement li = new LIElement()..children.add(a);
@@ -43,6 +43,14 @@ class DestinationDropdown {
    */
   void setDestinationTitle(String title) {
     titleElement.text = title;
+  }
+  
+  /**
+   * Handle change of destination to [newDestination].
+   */
+  void destinationChanged(Destination newDestination) {
+    locationManager.changeDestination(newDestination);
+    destinationDropdown.setDestinationTitle(newDestination.name);
   }
 }
 
@@ -70,7 +78,7 @@ class InfoPanel {
         <p>
           Your Location: ${currentLocation}<br>
           Destination: ${destination}<br>
-          Accuracy: ${accuracy}
+          Accuracy: ${accuracy}m
         </p>
         ''');
     
