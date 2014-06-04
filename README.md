@@ -30,5 +30,12 @@ displayed.
 
 The treasure hunt app could easily be changed into various other scenarios:
 
-* A [Geocaching](http://wikipedia.org/wiki/Geocaching) client.
-* A [Scavenger Hunt](http://wikipedia.org/wiki/Scavenger_hunt).
+* A [Geocaching](http://en.wikipedia.org/wiki/Geocaching) client.
+* A [Scavenger Hunt](http://en.wikipedia.org/wiki/Scavenger_hunt).
+
+
+## Known Limitations
+
+* In iOS Safari the compass points in an arbitrary direction. North will point
+in the direction the device is facing when the app was loaded. This will be 
+resolved when [Dart Issue 19119](is fixed).
