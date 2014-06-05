@@ -39,3 +39,9 @@ The treasure hunt app could easily be changed into various other scenarios:
 * In iOS Safari the compass points in an arbitrary direction. North will point
 in the direction the device is facing when the app was loaded. This will be 
 resolved when [Dart Issue 19119](is fixed).
+
+
+## Further Infos
+
+* [An Introduction to the Geolocation API](http://code.tutsplus.com/tutorials/an-introduction-to-the-geolocation-api--cms-20071)
+* [An Introduction to the Device Orientation API](http://code.tutsplus.com/tutorials/an-introduction-to-the-device-orientation-api--cms-21067)

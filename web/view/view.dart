@@ -69,7 +69,8 @@ class InfoPanel {
    * of the latitude/longitude.
    */
   void showLocationInfo(double distance, String currentLocation, 
-                        String destination, double accuracy) {
+                        String destination, double accuracy, double heading,
+                        bool absolute) {
     
     var distanceInfo = new HeadingElement.h3()
         ..text = 'Distance: ${distance.round()}m';
@@ -78,7 +79,9 @@ class InfoPanel {
         <p>
           Your Location: ${currentLocation}<br>
           Destination: ${destination}<br>
-          Accuracy: ${accuracy}m
+          Accuracy: ${accuracy}m<br>
+          Heading: ${heading}m<br>
+          Absolute North: ${absolute}
         </p>
         ''');
     

@@ -17,6 +17,11 @@ class LocationManager {
   /// The current heading.
   double heading;
   
+  /// Specifies whether the device is providing orientation data that's relative 
+  /// to the Earth's coordinate system, in which case its value is true, or to 
+  /// an arbitrary coordinate system.
+  bool absolute;
+  
   /// The current destination.
   Destination destination;
   
@@ -70,6 +75,7 @@ class LocationManager {
   void watchDeviceOrientation() {
     window.onDeviceOrientation.listen((DeviceOrientationEvent e) {
       heading = e.alpha;
+      absolute = e.absolute;
       
       updateCompass();
     });
@@ -109,7 +115,7 @@ class LocationManager {
         String destinationString = convertToDegreeMinute(destination.latLng);
         
         infoPanel.showLocationInfo(destinationDistance, locationString, 
-            destinationString, accuracy);
+            destinationString, accuracy, heading, absolute);
         
         showingSuccessMessage = false;
         
