@@ -168,11 +168,29 @@ class Alerts {
  */
 class DebugInfo {
   
-  Element debugElement = querySelector('#debug');
+  Element debugHeading = querySelector('#debug .heading');
+  Element debugWebkitHeading = querySelector('#debug .webkit-heading');
+  Element debugAbsolute = querySelector('#debug .absolute');
+  Element debugNeedsCalib = querySelector('#debug .needs-calib');
+  Element debugNeedsCalibCounter = querySelector('#debug .needs-calib-counter');
   
-  void showDebugInfo(Element e) {
-    debugElement.children.clear();
-    debugElement.children.add(e);
+  void updateHeading(String heading) {
+    debugHeading.text = heading;
   }
   
+  void updateWebkitHeading(String heading) {
+    debugWebkitHeading.text = heading;
+  }
+  
+  void updateAbsolute(String absolute) {
+    debugAbsolute.text = absolute;
+  }
+  
+  void updateNeedsCalib(String needsCalib) {
+    debugNeedsCalib.text = needsCalib;
+  }
+  
+  void updateNeedsCalibCounter(String needsCalibCounter) {
+    debugNeedsCalibCounter.text = needsCalibCounter;
+  }
 }

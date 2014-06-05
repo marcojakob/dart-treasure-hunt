@@ -17,6 +17,8 @@ class LocationManager {
   /// The current heading.
   double heading;
   
+  double webkitHeading;
+  
   /// Specifies whether the device is providing orientation data that's relative 
   /// to the Earth's coordinate system, in which case its value is true, or to 
   /// an arbitrary coordinate system.
@@ -41,6 +43,7 @@ class LocationManager {
     // Start watching the location of the user and his device orientation.
     watchLocation();
     watchDeviceOrientation();
+    watchNeedsCalibration();
   }
   
   /**
@@ -74,19 +77,34 @@ class LocationManager {
    */
   void watchDeviceOrientation() {
     window.onDeviceOrientation.listen((DeviceOrientationEvent e) {
-      heading = e.alpha;
       absolute = e.absolute;
+      heading = e.alpha;
+      
+      webkitHeading = new JsObject.fromBrowserObject(e)['webkitCompassHeading'];
       
       updateCompass();
       
-      debugInfo.showDebugInfo(new Element.html(
-          '''
-          <p>
-            Heading: ${heading}m<br>
-            Absolute North: ${absolute}
-          </p>
-          '''));
+      debugInfo.updateHeading(heading == null ? "null" : heading.toStringAsFixed(1));
+      debugInfo.updateWebkitHeading(webkitHeading == null ? "null" : webkitHeading.toStringAsFixed(1));
+      debugInfo.updateAbsolute(absolute == null ? "null" : absolute.toString());
     });
+  }
+  
+  /**
+   * 
+   */
+  void watchNeedsCalibration() {
+    var calibSupport = new JsObject.fromBrowserObject(window)['oncompassneedscalibration'];
+    if (calibSupport != null) {
+      int calibCounter = 0;
+      window.on['compassneedscalibration'].listen((event) {
+        calibCounter++;
+        debugInfo.updateNeedsCalib('true');
+        debugInfo.updateNeedsCalibCounter(calibCounter.toString());
+      });
+    } else {
+      debugInfo.updateNeedsCalib('not supported');
+    }
   }
   
   /**
@@ -137,7 +155,11 @@ class LocationManager {
    */
   void updateCompass() {
     // Update the compass.
-    compass.updateHeading(heading, destinationHeading);
+    if (webkitHeading != null) {
+      compass.updateHeading(webkitHeading, destinationHeading);
+    } else {
+      compass.updateHeading(heading, destinationHeading);
+    }
   }
 }
 

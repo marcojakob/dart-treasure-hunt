@@ -2,6 +2,7 @@ library treasure_hunt;
 
 import 'dart:html';
 import 'package:geo/geo.dart';
+import 'dart:js';
 
 part 'model/destination.dart';
 part 'view/view.dart';
