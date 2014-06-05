@@ -69,8 +69,7 @@ class InfoPanel {
    * of the latitude/longitude.
    */
   void showLocationInfo(double distance, String currentLocation, 
-                        String destination, double accuracy, double heading,
-                        bool absolute) {
+                        String destination, double accuracy) {
     
     var distanceInfo = new HeadingElement.h3()
         ..text = 'Distance: ${distance.round()}m';
@@ -80,8 +79,6 @@ class InfoPanel {
           Your Location: ${currentLocation}<br>
           Destination: ${destination}<br>
           Accuracy: ${accuracy}m<br>
-          Heading: ${heading}m<br>
-          Absolute North: ${absolute}
         </p>
         ''');
     
@@ -164,4 +161,18 @@ class Alerts {
   void clearError() {
     errorAlert.children.clear();
   }
+}
+
+/**
+ * Class managing debug information.
+ */
+class DebugInfo {
+  
+  Element debugElement = querySelector('#debug');
+  
+  void showDebugInfo(Element e) {
+    debugElement.children.clear();
+    debugElement.children.add(e);
+  }
+  
 }

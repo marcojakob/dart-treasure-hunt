@@ -78,6 +78,14 @@ class LocationManager {
       absolute = e.absolute;
       
       updateCompass();
+      
+      debugInfo.showDebugInfo(new Element.html(
+          '''
+          <p>
+            Heading: ${heading}m<br>
+            Absolute North: ${absolute}
+          </p>
+          '''));
     });
   }
   
@@ -115,7 +123,7 @@ class LocationManager {
         String destinationString = convertToDegreeMinute(destination.latLng);
         
         infoPanel.showLocationInfo(destinationDistance, locationString, 
-            destinationString, accuracy, heading, absolute);
+            destinationString, accuracy);
         
         showingSuccessMessage = false;
         

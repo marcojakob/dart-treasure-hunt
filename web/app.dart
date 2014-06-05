@@ -19,6 +19,8 @@ InfoPanel infoPanel;
 Compass compass;
 Alerts alerts;
 
+DebugInfo debugInfo;
+
 /**
  * Wire up the application.
  */
@@ -26,12 +28,14 @@ void main() {
   // Init model data.
   allDestinations = createDestinations();
   
-  // Init controllers.
-  locationManager = new LocationManager();
-  
   // Init views.
   destinationDropdown = new DestinationDropdown(allDestinations);
   infoPanel = new InfoPanel();
   compass = new Compass();
   alerts = new Alerts();
+  
+  debugInfo = new DebugInfo();
+  
+  // Init controllers.
+  locationManager = new LocationManager();
 }
