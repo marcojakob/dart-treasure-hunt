@@ -156,7 +156,7 @@ class LocationManager {
   void updateCompass() {
     // Update the compass.
     if (webkitHeading != null) {
-      compass.updateHeading(webkitHeading, destinationHeading);
+      compass.updateHeading(360 - webkitHeading, destinationHeading);
     } else {
       compass.updateHeading(heading, destinationHeading);
     }

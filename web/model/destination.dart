@@ -38,6 +38,13 @@ List<Destination> createDestinations() {
       ..successTitle = 'Nice! You are at the Bear Pit!'
       ..successImage = 'resources/images/bear.jpg'
       ..successMessage = 'Try to take a picture of a bear.');
+
+  dests.add(new Destination()
+      ..name = 'Vor der WG'
+      ..latLng = new LatLng(46.892780, 7.500639)
+      ..successTitle = 'Nice! You\'ve found it!'
+      ..successImage = 'resources/images/brunnen.gif'
+      ..successMessage = 'Enjoy.');
   
   return dests;
 }
