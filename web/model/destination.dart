@@ -6,7 +6,7 @@ part of treasure_hunt;
 class Destination {
   String name;
   LatLng latLng;
-  
+
   String successTitle;
   String successImage;
   String successMessage;
@@ -17,7 +17,7 @@ class Destination {
  */
 List<Destination> createDestinations() {
   List<Destination> dests = [];
-  
+
   dests.add(new Destination()
       ..name = 'Bundeshaus (Federal Palace)'
       ..latLng = new LatLng(46.946240, 7.444588)
@@ -40,11 +40,11 @@ List<Destination> createDestinations() {
       ..successMessage = 'Try to take a picture of a bear.');
 
   dests.add(new Destination()
-      ..name = 'Vor der WG'
-      ..latLng = new LatLng(46.892780, 7.500639)
+      ..name = 'Chinagarten Zürich'
+      ..latLng = new LatLng(47.354997, 8.551915)
       ..successTitle = 'Nice! You\'ve found it!'
-      ..successImage = 'resources/images/brunnen.gif'
+      ..successImage = 'resources/images/chinagarten.jpg'
       ..successMessage = 'Enjoy.');
-  
+
   return dests;
 }

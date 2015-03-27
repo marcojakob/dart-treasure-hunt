@@ -1,7 +1,8 @@
 name: treasure_hunt
 description: A treasure hunt app to learn dart programming.
 dependencies:
-  bootstrap_for_pub: any
   browser: any
   geo: any
-  jquery_for_pub: any
+  dart_to_js_script_rewriter: any
+transformers:
+- dart_to_js_script_rewriter
