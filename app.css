@@ -1,0 +1,23 @@
+#error-alert {
+  margin-top: 15px;
+}
+
+#info-panel img {
+  max-width: 100%;
+}
+
+#compass-container {
+  position: relative;
+}
+
+#compass, #needle {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+}
+
+#debug {
+  display: none;
+}
